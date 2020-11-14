@@ -8,7 +8,7 @@ var students = [
 	{ id: 491, name: "Ally" }
 ];
 
-function sortStudentsByName() {
+function sortStudentsByName(students) {
 	// Don't modify this function
 	students.sort(function byName(s1,s2){
 		if (s1.name < s2.name) return -1;
@@ -18,7 +18,7 @@ function sortStudentsByName() {
 	return students;
 }
 
-function sortStudentsByID() {
+function sortStudentsByID(students) {
 	// Don't modify this function
 	students.sort(function byID(s1,s2){
 		return s1.id - s2.id;
@@ -29,10 +29,16 @@ function sortStudentsByID() {
 // *************************************
 
 // modify/move this function
-function getStudentsByName() { return students; }
+function getStudentsByName() { 
+	var s = [...students]
+	return sortStudentsByName(s);
+ }
 
 // modify/move this function
-function getStudentsByID() { return students; }
+function getStudentsByID() { 
+	var s = [...students]
+	return sortStudentsByID(s);
+ }
 
 // *************************************
 
