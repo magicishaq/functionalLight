@@ -41,3 +41,26 @@ var single = unary(f);
 var double = binary(f); 
 
 console.log(double(1,2,3,4))
+
+
+//providing arguments in a different order
+
+function flip(fn){
+    return function fliped(arg1, arg2, ...args){
+        return fn(arg2, arg1, ...args); //flips the arguments the first two
+    }
+}
+function completeFilp(fn){
+    return function cf (...args){
+        return fn(...args.reverse()); 
+    }
+}
+function g (...args){
+    return args; 
+}
+
+var flipz = flip(g)
+var complete = completeFilp(g)
+var t = flipz(1,2,3,4,5,6)
+
+console.log(t) ; 
