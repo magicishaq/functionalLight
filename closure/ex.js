@@ -1,7 +1,26 @@
 "use strict";
+/**
+ * 
+ * doestn pass because str gets modifed and therefore is not a pure function
+ */
+// function strBuilder(str) {
+// return function next (v){
+// 	if(typeof v === 'string'){
+// 		str += v
+// 		return next; 
+// 	}
+// 	return str
 
-function strBuilder(str) {
-	return strBuilder;
+// }
+//   }
+
+function strBuilder (str){
+	return function next (v){
+		if(typeof v == 'string'){
+			return strBuilder(str + v)
+		}
+		return str; 
+	}
 }
 
 var hello = strBuilder("Hello, ");

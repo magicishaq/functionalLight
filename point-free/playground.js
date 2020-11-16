@@ -30,7 +30,7 @@
 //Advanced point free
 
 function mod (y) {
-    return isMod (x) {
+    return function isMod (x) {
         return x % y 
     }
 }
@@ -61,7 +61,9 @@ var isOdd = compose(eq1(1), mod2(2))
 var isEven = not(isOdd)
 
 function not(fn) {
-    return isNot (...args) {
+    return function isNot (...args) {
             return !fn(...args);
     }
 }
+
+
