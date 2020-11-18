@@ -5,8 +5,31 @@ function decrement(x) { return x - 1; }
 function double(x) { return x * 2; }
 function half(x) { return x / 2; }
 
-function compose() { return compose; }
-function pipe() { return pipe; }
+function compose(...fn) {   
+    return function composed (x){
+        for(var i = fn.length - 1 ; i >= 0 ; i--){
+            x = fn[i](x)
+        }
+        return x
+        
+    }
+}
+
+/**or using a connected function */
+// function compose(...fn) {
+//     return function composed(x) {
+//         return pipe(...fn.reverse())
+//     }
+// }
+
+function pipe(...fn) {
+    return function piped (x) {
+        for(var i = 0 ; i < fn.length; i++) {
+             x = fn[i](x)
+        }
+        return x
+    } 
+ }
 
 var f1 = compose(increment,decrement);
 var f2 = pipe(decrement,increment);
