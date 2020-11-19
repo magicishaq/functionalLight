@@ -4,12 +4,23 @@ function lotteryNum() {
 	return (Math.round(Math.random() * 100) % 58) + 1;
 }
 
-function pickNumber() {}
+function pickNumber() {
+    var list = []
+    return function getLottery() {
+        if (list.length < 6) {
+            list.push(lotteryNum())
+            return list.sort();
+        } else {
+            return list
+        }
+    }
 
-var luckyLotteryNumbers = [];
+}
+var temp = pickNumber()
+var luckyLotteryNumbers = temp(); 
 
 while (luckyLotteryNumbers.length < 6) {
-	pickNumber();
+	temp()
 }
 
-console.log(luckyLotteryNumbers);
+console.log(luckyLotteryNumbers, 'finsihed');
