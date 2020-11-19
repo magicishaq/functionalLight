@@ -1,6 +1,22 @@
 "use strict";
+function isEqual (start, end){
+    return start === end;  
+}
 
-function isPalindrome() {}
+
+function isPalindrome(str) {
+if(str.length <= 1) {
+    return true
+}
+var match = isEqual(str[0], str[str.length - 1]) 
+if(match){ 
+return isPalindrome(str.substring(1, str.length - 1))
+}else{
+    return false; 
+}
+//cut them off 
+//pass into string with first and last letter
+}
 
 console.log( isPalindrome("") === true );
 console.log( isPalindrome("a") === true );
